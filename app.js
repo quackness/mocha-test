@@ -23,6 +23,6 @@ app.use('/api/mediaTypes', mediaTypes);
 
 app.listen(3000, () => { "Listening on port 3000" });
 
-module.exports = app.listen(3099);
+module.exports = app.listen();
 //the front end statuses vs end point 200, 201 etc
 //change origin

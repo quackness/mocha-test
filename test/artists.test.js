@@ -1,7 +1,6 @@
 const assert = require('assert');
 const supertest = require('supertest');
 const app = require('../app');
-// console.log(app)
 
 describe('Artists API', () => {
   it('should get a list of artists', async () => {
