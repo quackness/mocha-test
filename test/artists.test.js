@@ -1,7 +1,5 @@
 const assert = require('assert');
 const supertest = require('supertest');
-// const expect = require('chai');
-// const app = require('../routes/artists/index');
 const app = require('../app');
 // console.log(app)
 
