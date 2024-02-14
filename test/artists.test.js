@@ -1,6 +1,5 @@
 const assert = require('assert');
 const supertest = require('supertest');
-// const app = require('../app');
 
 describe('Artists API', () => {
   let server;
@@ -18,8 +17,11 @@ describe('Artists API', () => {
       assert.strictEqual(response.status, 200);
       assert.strictEqual(response.header['content-type'], 'application/json; charset=utf-8');
     };
-
-    // return;
   });
 });
 
+
+//credits: https://glebbahmutov.com/blog/how-to-correctly-unit-test-express-server/
+//https://stackoverflow.com/questions/49789886/how-to-correctly-close-express-server-between-tests-using-mocha-and-chai
+//https://www.geeksforgeeks.org/express-js-app-listen-function/
+//https://medium.com/spidernitt/testing-with-mocha-and-chai-b8da8d2e10f2
