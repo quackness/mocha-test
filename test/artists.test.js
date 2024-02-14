@@ -25,3 +25,4 @@ describe('Artists API', () => {
 //https://stackoverflow.com/questions/49789886/how-to-correctly-close-express-server-between-tests-using-mocha-and-chai
 //https://www.geeksforgeeks.org/express-js-app-listen-function/
 //https://medium.com/spidernitt/testing-with-mocha-and-chai-b8da8d2e10f2
+//video purposes
