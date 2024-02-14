@@ -21,8 +21,8 @@ app.use('/api/tracks', tracksRouter);
 app.use('/api/mediaTypes', mediaTypes);
 
 
-app.listen(3000, () => { "Listening on port 3000" });
+const server = app.listen(3000, (done) => { "Listening on port 3000" });
 
-module.exports = app.listen();
+module.exports = server;
 //the front end statuses vs end point 200, 201 etc
 //change origin
