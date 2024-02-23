@@ -7,7 +7,7 @@ const app = express();
 app.use('/api/artists', artistsRouter);
 
 
-describe('Artists API', () => {
+describe('Get Artists API', () => {
   it('should return 200 upon calling the get artists endpoint', (done) => {
     supertest(app)
       .get('/api/artists')
