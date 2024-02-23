@@ -5,6 +5,7 @@ const path = require('path');
 const db = Database(process.cwd() + '/database/chinook.sqlite');
 const Joi = require('joi');
 const router = express.Router();
+router.use(express.json());
 
 const albumsSchema = Joi.object({
   Title: Joi.string().max(50).required(),
@@ -36,6 +37,7 @@ router.post('/', (req, res) => {
   if (error) {
     return res.status(422).send(error.details);
   }
+  console.log('req body')
   console.log(req.body);
   const columnName = [];
   const values = [];
