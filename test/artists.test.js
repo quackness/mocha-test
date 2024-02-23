@@ -19,16 +19,25 @@ describe('Artists API', () => {
       });
   });
   it('should update artist name', (done) => {
-    //edit the name
+    //add the new artist name so it can be edited later
     supertest(app)
-      .patch('/api/artists/2')
-      .send({ Name: 'Testings' })
-      .expect(200)
-      .end((err, res) => {
-        console.log(res.body)
-        assert.strictEqual(res.body.changes, 1);
-        done();
-      });
+      .post('/api/artists')
+      .send({ Name: 'EditTest' })
+      .expect(201)
+      .end((error, response) => {
+        if (error) return done(error);
+
+        const id = response.body.lastInsertRowid;
+        //edit the name
+        supertest(app)
+          .patch(`/api/artists/${id}`)
+          .send({ Name: "hasBeenEdited" })
+          .expect(200)
+          .end((err, res) => {
+            assert.strictEqual(res.body.changes, 1);
+            done();
+          });
+      })
   });
 });
 
