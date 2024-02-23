@@ -1,5 +1,10 @@
 const express = require('express');
+const app = express();
+//serve static files 
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static('_FrontendStarterFiles'));
 //import routes 
 const themesRouter = require('./routes/themes');
 const artistsRouter = require('./routes/artists');
@@ -7,11 +12,6 @@ const albumsRouter = require('./routes/albums');
 const tracksRouter = require('./routes/tracks');
 const mediaTypes = require('./routes/mediaTypes');
 
-const app = express();
-//serve static files 
-app.use(express.static('_FrontendStarterFiles'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
 
 //inject routes
 app.use('/api/themes', themesRouter);
