@@ -1,7 +1,7 @@
 const assert = require('assert');
 const supertest = require('supertest');
 const express = require('express');
-const artistsRouter = require('../routes/themes/index');
+const artistsRouter = require('../routes/artists/index');
 const app = express();
 
 app.use('/api/artists', artistsRouter);

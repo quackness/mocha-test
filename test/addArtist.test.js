@@ -11,7 +11,7 @@ describe('POST /api/artists', () => {
   it('should return a validation error when artist name is not provided', (done) => {
     request(app)
       .post('/api/artists')
-      .send({ Name: '' })//impitate blank field
+      .send({ Name: '' })//imitate blank field
       .expect(422)//taken from the front end file
       .end((err, res) => {
         assert.strictEqual(res.body[0].message, '"Name" is not allowed to be empty');
