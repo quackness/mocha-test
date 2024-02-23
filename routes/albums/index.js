@@ -23,7 +23,7 @@ router.delete('/:id', (req, res) => {
   const deletAlbumSql = 'DELETE from albums Where AlbumId = ?';
   const deleteAlbum = db.prepare(deletAlbumSql);
   const result = deleteAlbum.run([req.params.id]);
-  console.log(result)
+  // console.log(result)
   if (result.changes > 0) {
     res.json(result);
   } else {
@@ -37,8 +37,8 @@ router.post('/', (req, res) => {
   if (error) {
     return res.status(422).send(error.details);
   }
-  console.log('req body')
-  console.log(req.body);
+  // console.log('req body')
+  // console.log(req.body);
   const columnName = [];
   const values = [];
   const parametersSanitized = [];
@@ -47,7 +47,7 @@ router.post('/', (req, res) => {
     parametersSanitized.push('?');
     values.push(req.body[key]);
   }
-  console.log(columnName, parametersSanitized, values);
+  //console.log(columnName, parametersSanitized, values);
   const addAlbumSql = `INSERT INTO Albums (${columnName.join(',')}) VALUES (${parametersSanitized.join(',')});`
   const addAlbum = db.prepare(addAlbumSql);
   const result = addAlbum.run(values);
@@ -59,7 +59,7 @@ router.patch('/:id', (req, res) => {
   if (error) {
     return res.status(422).send(error.details);
   }
-  console.log(req.body);
+  // console.log(req.body);
   const columnName = [];
   const values = [];
   for (key in req.body) {
@@ -67,7 +67,7 @@ router.patch('/:id', (req, res) => {
     values.push(req.body[key])
   }
   values.push(req.params.id);
-  console.log(columnName, values, req.params.id)
+  // console.log(columnName, values, req.params.id)
   const editAlbumSQL = `UPDATE albums SET ${columnName.join(', ')} WHERE AlbumId =?`;
   console.log(editAlbumSQL);
   const editAlbum = db.prepare(editAlbumSQL);
@@ -91,7 +91,7 @@ const storage = multer.diskStorage({
 })
 const upload = multer({ storage: storage })
 router.post('/:id/albumart', upload.single('albumart'), (req, res) => {
-  console.log(req.file); // Output the entire req object for inspection
+  //console.log(req.file); // Output the entire req object for inspection
   const query = db.prepare('UPDATE albums SET AlbumArt = ? WHERE AlbumId = ?');
   const result = query.run([req.file.filename, req.params.id]);
   res.json(result);

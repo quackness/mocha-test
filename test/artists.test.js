@@ -7,17 +7,49 @@ const app = express();
 app.use('/api/artists', artistsRouter);
 
 
-describe('Get Artists API', () => {
+describe('Artists API', () => {
   it('should return 200 upon calling the get artists endpoint', (done) => {
     supertest(app)
       .get('/api/artists')
       .expect(200)
       .end((err, res) => {
+        console.log(res.body.length)
         assert.strictEqual(res.status, 200);
         done();
       });
   });
+  it('should update artist name', (done) => {
+    //edit the name
+    supertest(app)
+      .patch('/api/artists/2')
+      .send({ Name: 'Testings' })
+      .expect(200)
+      .end((err, res) => {
+        console.log(res.body)
+        assert.strictEqual(res.body.changes, 1);
+        done();
+      });
+  });
 });
+
+
+
+//https://github.com/danielfsousa/express-rest-boilerplate/blob/e5b619810d91075931e81f7014795313bb949552/src/api/tests/integration/user.test.js#L409
+//     delete dbUsers.branStark.password;
+//     const id = (await User.findOne(dbUsers.branStark))._id;
+//     const { name } = user;
+
+//     return request(app)
+//       .patch(`/v1/users/${id}`)
+//       .set('Authorization', `Bearer ${adminAccessToken}`)
+//       .send({ name })
+//       .expect(httpStatus.OK)
+//       .then((res) => {
+//         expect(res.body.name).to.be.equal(name);
+//         expect(res.body.email).to.be.equal(dbUsers.branStark.email);
+//       });
+//   });
+// });
 // let server;
 // beforeEach(function () {
 //   delete require.cache[require.resolve('../app')];

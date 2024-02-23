@@ -22,7 +22,7 @@ describe('DELETE /api/albums/:id', () => {
       .end((error, response) => {
         if (error) return done(error);
         const albumIdToDelete = response.body.lastInsertRowid;
-        console.log(albumIdToDelete);
+        // console.log(albumIdToDelete);
         //delete the album
         request(app)
           .delete(`/api/albums/${albumIdToDelete}`)

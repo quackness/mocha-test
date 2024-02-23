@@ -5,6 +5,7 @@ const path = require('path');
 const db = Database(process.cwd() + '/database/chinook.sqlite');
 const Joi = require('joi');
 const router = express.Router();
+router.use(express.json());
 
 const artistsSchema = Joi.object({
   Name: Joi.string().max(50).required(),
